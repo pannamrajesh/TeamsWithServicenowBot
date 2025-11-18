@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stock Scanner - Intraday & BTST</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📈 Live Stock Scanner</h1>
+            <div class="market-status" id="marketStatus">
+                <span class="status-indicator" id="statusIndicator"></span>
+                <span id="statusText">Loading...</span>
+                <span id="currentTime"></span>
+            </div>
+        </header>
+
+        <div class="scanners-container">
+            <!-- Intraday Scanner -->
+            <section class="scanner-section">
+                <div class="scanner-header">
+                    <h2>🟦 Intraday First 5-Minute Candle Breakout Scanner</h2>
+                    <div class="scanner-info">
+                        <p>Monitors stocks for breakout above/below first 5-minute candle (9:15-9:20)</p>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="intradayTable">
+                        <thead>
+                            <tr>
+                                <th>Stock</th>
+                                <th>First 5-min High</th>
+                                <th>First 5-min Low</th>
+                                <th>Current Price</th>
+                                <th>Breakout</th>
+                                <th>Breakout Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="intradayBody">
+                            <tr>
+                                <td colspan="7" class="loading">Loading intraday data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- BTST Scanner -->
+            <section class="scanner-section">
+                <div class="scanner-header">
+                    <h2>🟩 BTST Volume + Near Breakout Scanner</h2>
+                    <div class="scanner-info">
+                        <p>Identifies stocks with volume surge (3:00 PM - 3:30 PM) near breakout zones</p>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="btstTable">
+                        <thead>
+                            <tr>
+                                <th>Stock</th>
+                                <th>Current Price</th>
+                                <th>Last 30-min Volume</th>
+                                <th>Avg Daily Volume</th>
+                                <th>Volume Ratio</th>
+                                <th>Resistance</th>
+                                <th>Support</th>
+                                <th>Near Breakout</th>
+                                <th>Direction</th>
+                            </tr>
+                        </thead>
+                        <tbody id="btstBody">
+                            <tr>
+                                <td colspan="9" class="loading">Loading BTST data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
+
+
