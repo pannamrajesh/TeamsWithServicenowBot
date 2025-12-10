@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Task Notifier with Sound",
+  "version": "1.0",
+  "description": "Notifies when a new task appears on selected websites and plays a sound",
+  "permissions": [
+    "notifications",
+    "alarms",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*.servicenow.com/*",
+    "https://site2.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.servicenow.com/*",
+        "https://site2.com/*"
+      ],
+      "js": [
+        "content_script.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Task Notifier",
+    "default_popup": "popup.html"
+  }
+}
